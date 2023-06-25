@@ -1,0 +1,43 @@
+.about-movie {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    padding-left: 170px;
+    padding-right: 170px;
+    &__to-start-page {
+        margin-top: 60px;
+        background-color: #fff;
+        border: none;
+    }
+}
+.info {
+    margin-top: 125px;
+    display: flex;
+    column-gap: 90px;
+    &__poster {
+        width: 300px;
+    }
+    &__description {
+        font-size: 30px;
+        & > *:not(:first-child, :last-child){
+            margin-bottom: 20px;
+        }
+        & span {
+            color: $blue-color;
+        }
+    }
+    &__name {
+        margin-bottom: 33px;
+        font-weight: 700;
+        font-size: 50px;
+    }
+    &__plot {
+        margin: 74px auto 0;
+        max-width: 900px;
+        text-align: center;
+
+    }
+}
+

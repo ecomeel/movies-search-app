@@ -62,7 +62,12 @@ button, input {
   box-sizing: border-box;
 }
 
+a {
+  color: #000;
+}
+
 html, body {
+  position: relative;
   width: 100%;
   height: 100%;
   font: 400 32px Inter, sans-serif;
@@ -71,6 +76,12 @@ html, body {
 .movie-search-app {
   padding-top: 102px;
   padding-left: 170px;
+  padding-right: 170px;
+}
+
+.big-text {
+  font-size: 40px;
+  font-weight: 700;
 }
 
 .search__input {
@@ -88,4 +99,75 @@ html, body {
 
 .search-result {
   margin-top: 48px;
+}
+
+.movie {
+  padding: 30px;
+  width: 800px;
+  display: flex;
+  column-gap: 65px;
+  border-radius: 35px;
+  transition: background-color 0.7s ease;
+}
+.movie:hover {
+  background-color: #D9D9D9;
+}
+.movie__poster {
+  width: 100px;
+}
+.movie__title {
+  font-size: 40px;
+  font-weight: 700;
+}
+.movie__year {
+  margin-top: 7px;
+  color: #0094FF;
+  font-size: 25px;
+}
+.movie__type {
+  margin-top: 18px;
+  font-size: 30px;
+}
+
+.about-movie {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  padding-left: 170px;
+  padding-right: 170px;
+}
+.about-movie__to-start-page {
+  margin-top: 60px;
+  background-color: #fff;
+  border: none;
+}
+
+.info {
+  margin-top: 125px;
+  display: flex;
+  column-gap: 90px;
+}
+.info__poster {
+  width: 300px;
+}
+.info__description {
+  font-size: 30px;
+}
+.info__description > *:not(:first-child, :last-child) {
+  margin-bottom: 20px;
+}
+.info__description span {
+  color: #0094FF;
+}
+.info__name {
+  margin-bottom: 33px;
+  font-weight: 700;
+  font-size: 50px;
+}
+.info__plot {
+  margin: 74px auto 0;
+  max-width: 900px;
+  text-align: center;
 }/*# sourceMappingURL=style.css.map */

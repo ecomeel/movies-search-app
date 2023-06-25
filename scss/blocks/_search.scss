@@ -1,0 +1,15 @@
+.search {
+
+    &__input {
+        width: 500px;
+        height: 60px;
+    }
+    &__button {
+        margin-left: 24px;
+        width: 250px;
+        height: 60px;
+        border: none;
+        background-color: $blue-color;
+        color: white;
+    }
+}

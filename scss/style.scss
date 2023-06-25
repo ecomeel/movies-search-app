@@ -1,8 +1,11 @@
 @import "reset";
-
+a {
+    color: #000;
+}
 $blue-color: #0094FF;
 
 html, body {
+    position: relative;
     width: 100%;
     height: 100%;
     font: 400 32px Inter, sans-serif;
@@ -11,24 +14,19 @@ html, body {
 .movie-search-app {
     padding-top: 102px;
     padding-left: 170px;
+    padding-right: 170px;
 }
 
-.search {
-
-    &__input {
-        width: 500px;
-        height: 60px;
-    }
-    &__button {
-        margin-left: 24px;
-        width: 250px;
-        height: 60px;
-        border: none;
-        background-color: $blue-color;
-        color: white;
-    }
+.big-text {
+    font-size: 40px;
+    font-weight: 700;
 }
+
+@import "blocks/search";
 
 .search-result {
     margin-top: 48px;
 }
+
+@import "blocks/movie";
+@import "blocks/about-movie"
