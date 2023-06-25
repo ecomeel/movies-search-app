@@ -1,14 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="shortcut icon" href="img/icon.png" type="image/x-icon">
-    <title>Movies search app</title>
-</head>
-<body>
-    
-    <script src="js/index.js"></script>
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="shortcut icon" href="img/icon.png" type="image/x-icon" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+            rel="stylesheet"
+        />
+        <title>Movies search app</title>
+    </head>
+    <body>
+        <div class="movie-search-app">
+            <div class="search">
+                <input 
+                    id="searchMovieInput"
+                    class="search__input"
+                    placeholder="Movie name" />
+                <button id="searchMovieBtn" class="search__button">Search</button>
+            </div>
+            <div id="searchResult" class="search-result"></div>
+        </div>
+        <script src="js/index.js"></script>
+    </body>
 </html>

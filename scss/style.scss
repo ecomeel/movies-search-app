@@ -1,0 +1,34 @@
+@import "reset";
+
+$blue-color: #0094FF;
+
+html, body {
+    width: 100%;
+    height: 100%;
+    font: 400 32px Inter, sans-serif;
+}
+
+.movie-search-app {
+    padding-top: 102px;
+    padding-left: 170px;
+}
+
+.search {
+
+    &__input {
+        width: 500px;
+        height: 60px;
+    }
+    &__button {
+        margin-left: 24px;
+        width: 250px;
+        height: 60px;
+        border: none;
+        background-color: $blue-color;
+        color: white;
+    }
+}
+
+.search-result {
+    margin-top: 48px;
+}
