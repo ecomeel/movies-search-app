@@ -1,18 +1,13 @@
-// const params = new URLSearchParams(location.search);
-// console.log(params)
-// const id = params.get('id')
-// console.log(id)
-
-// fetch("https://jsonplaceholder.typicode.com/todos/1")
-//     .then(response => response.json())
-//     .then(res => console.log(res))
+const MOVIE_NOT_FOUND_ERROR = 'Movie not found!';
+const BIG_TEXT_CLASSNAME = 'big-text';
+const BODY_OVERFLOW_HIDE_CLASSNAME = "body-fixed";
+const OPEN_ABOUT_MOVIE_WINDOW_CLASSNAME = "about-movie_active";
 
 const searchMovieInputNode = document.getElementById("searchMovieInput");
 const searchMovieBtnNode = document.getElementById("searchMovieBtn");
 const searchResultNode = document.getElementById("searchResult");
-const aboutMovieNode = document.getElementById('aboutMovie');
+const aboutMovieNode = document.getElementById("aboutMovie");
 const bodyNode = document.body;
-
 
 const isSearchEmpty = (result) => {
     return result ? false : true;
@@ -23,8 +18,8 @@ const getSearchEntry = () => {
 };
 
 const renderNotFoundMovies = () => {
-    searchResultNode.innerText = "Movies not found";
-    searchResultNode.classList.add("big-text");
+    searchResultNode.innerText = MOVIE_NOT_FOUND_ERROR;
+    searchResultNode.classList.add(BIG_TEXT_CLASSNAME);
 };
 
 const renderMovies = (movies) => {
@@ -52,21 +47,18 @@ const renderMovies = (movies) => {
     });
 };
 
-const closeBtnHandler = () => {
-    aboutMovieNode.classList.remove('about-movie_active')
-    bodyNode.classList.remove('body-fixed');
-}
+const closeWndHandler = () => {
+    aboutMovieNode.classList.remove(OPEN_ABOUT_MOVIE_WINDOW_CLASSNAME);
+    bodyNode.classList.remove(BODY_OVERFLOW_HIDE_CLASSNAME);
+};
 
-const openAboutMovie = (event) => {
-    const movieNode = event.target.closest('.movie');
-    const movId = movieNode.getAttribute('imdbID');
-    const API = `https://www.omdbapi.com/?apikey=f0bbff55&i=${movId}`
-    fetch(API)
-        .then(response => response.json())
-        .then(res => {
-            aboutMovieNode.classList.add('about-movie_active');
-            bodyNode.classList.add('body-fixed');
-            const movieHTML = `
+const openWnd = () => {
+    aboutMovieNode.classList.add(OPEN_ABOUT_MOVIE_WINDOW_CLASSNAME);
+    bodyNode.classList.add(BODY_OVERFLOW_HIDE_CLASSNAME);
+};
+
+const renderAboutMovie = (res) => {
+    const movieHTML = `
             <button class="about-movie__to-start-page big-text" id="toStartPage"><- Back to search</button>
             <div class="about-movie__info info">
                 <img id="infoPoster" class="info__poster" src=${res.Poster} alt="poster">
@@ -84,28 +76,33 @@ const openAboutMovie = (event) => {
             </div>
             <p class="info__plot">${res.Plot}</p>
             `;
-            aboutMovieNode.innerHTML = movieHTML;
+    aboutMovieNode.innerHTML = movieHTML;
+};
 
-            const toStartPageNode = document.getElementById('toStartPage');
-            toStartPageNode.addEventListener('click', closeBtnHandler)
-        })
-    
-}
+const openAboutMovie = (event) => {
+    const movieNode = event.target.closest(".movie");
+    const movId = movieNode.getAttribute("imdbID");
 
-const findMovies = (searchEntry) => {
-    const API = `https://www.omdbapi.com/?apikey=f0bbff55&s=${searchEntry}`;
-    fetch(API)
+    fetch(`https://www.omdbapi.com/?apikey=f0bbff55&i=${movId}`)
         .then((response) => response.json())
         .then((res) => {
-            if ((res.Response == "False") & (res.Error == "Movie not found!")) {
+            openWnd();
+            renderAboutMovie(res);
+            const toStartPageNode = document.getElementById("toStartPage");
+            toStartPageNode.addEventListener("click", closeWndHandler);
+        });
+};
+
+const findMovies = (searchEntry) => {
+    fetch(`https://www.omdbapi.com/?apikey=f0bbff55&s=${searchEntry}`)
+        .then((response) => response.json())
+        .then((res) => {
+            if ((res.Response == "False") & (res.Error == MOVIE_NOT_FOUND_ERROR)) {
                 renderNotFoundMovies();
             } else {
                 const movies = res.Search;
-                searchMovieBtnNode.style.backgroundColor = '#000';
-                console.log(movies);
-
+                searchMovieBtnNode.style.backgroundColor = 'black';
                 renderMovies(movies);
-
                 searchResultNode.addEventListener("click", openAboutMovie);
             }
         });
